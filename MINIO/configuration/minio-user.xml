@@ -19,13 +19,13 @@
 <configuration>
     <property>
         <name>MINIO_ROOT_USER</name>
-        <value>minio</value>
+        <value>admin</value>
         <description>minio user.</description>
         <on-ambari-upgrade add="true"/>
     </property>
     <property>
         <name>MINIO_ROOT_PASSWORD</name>
-        <value>Inspur@1024</value>
+        <value>admin</value>
         <description>minio user password.</description>
         <on-ambari-upgrade add="true"/>
     </property>
