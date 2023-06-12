@@ -1,0 +1,6 @@
+{
+  "general_deps" : {
+    "_comment" : "dependencies for minio",
+    "MINIO_SERVICE_CHECK-SERVICE_CHECK" : ["MINIO_SERVER-START"]
+  }
+}

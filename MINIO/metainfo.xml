@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<metainfo>
+  <schemaVersion>2.0</schemaVersion>
+  <services>
+    <service>
+      <name>MINIO</name>
+      <displayName>Minio</displayName>
+      <comment>MinIO 是一款高性能、分布式的对象存储系统。</comment>
+      <version>RELEASE</version>
+      <components>
+        <component>
+          <name>MINIO_SERVER</name>
+          <displayName>Minio Server</displayName>
+          <category>MASTER</category>
+          <cardinality>1+</cardinality>
+          <versionAdvertised>true</versionAdvertised>
+          <rollingRestartSupported>true</rollingRestartSupported>
+          <commandScript>
+            <script>scripts/minio_server.py</script>
+            <scriptType>PYTHON</scriptType>
+            <timeout>1200</timeout>
+          </commandScript>
+        </component>
+        <component>
+          <name>MINIO_CLIENT</name>
+          <displayName>Minio Client</displayName>
+          <category>CLIENT</category>
+          <cardinality>1+</cardinality>
+          <versionAdvertised>true</versionAdvertised>
+          <rollingRestartSupported>true</rollingRestartSupported>
+          <commandScript>
+            <script>scripts/minio_client.py</script>
+            <scriptType>PYTHON</scriptType>
+            <timeout>1200</timeout>
+          </commandScript>
+        </component>
+      </components>
+      <commandScript>
+        <script>scripts/minio_check.py</script>
+        <scriptType>PYTHON</scriptType>
+        <timeout>300</timeout>
+      </commandScript>
+      <configuration-dependencies>
+        <config-type>minio-env</config-type>
+      </configuration-dependencies>
+      <osSpecifics>
+        <osSpecific>
+          <osFamily>redhat7,redhat6</osFamily>
+          <packages>
+            <package>
+              <name>minio_${stack_version}</name>
+            </package>
+            <package>
+              <name>mc_${stack_version}</name>
+            </package>
+          </packages>
+        </osSpecific>
+        <osSpecific>
+          <osFamily>ubuntu14,ubuntu16</osFamily>
+          <packages>
+            <package>
+              <name>minio_${stack_version}</name>
+            </package>
+            <package>
+              <name>mc_${stack_version}</name>
+            </package>
+          </packages>
+        </osSpecific>
+      </osSpecifics>
+      <restartRequiredAfterChange>true</restartRequiredAfterChange>
+          <quickLinksConfigurations>
+              <quickLinksConfiguration>
+                  <fileName>quicklinks.json</fileName>
+                  <default>true</default>
+              </quickLinksConfiguration>
+         </quickLinksConfigurations>
+         <configuration-dependencies>
+             <config-type>minio-config</config-type>
+             <config-type>minio-env</config-type>
+             <config-type>minio-user</config-type>
+         </configuration-dependencies>
+    </service>
+  </services>
+</metainfo>

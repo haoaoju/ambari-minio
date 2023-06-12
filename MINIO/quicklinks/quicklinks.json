@@ -1,0 +1,27 @@
+{
+  "name": "default",
+  "description": "default quick links configuration",
+  "configuration": {
+    "protocol": {
+      "type":"http"
+    },
+    "links": [
+      {
+        "name": "minio_ui",
+        "label": "Minio UI",
+        "requires_user_name": "false",
+        "component_name": "MINIO_SERVER",
+        "url":"%@://%@:%@",
+        "port":{
+          "http_property": "minio_port",
+          "http_default_port": "9000",
+          "regex": "\\w*:(\\d+)",
+          "site": "minio-config"
+        },
+        "protocol":{
+          "type":"http"
+        }
+      }
+    ]
+  }
+}

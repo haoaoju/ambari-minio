@@ -1,0 +1,28 @@
+{
+  "services": [
+    {
+      "name": "MINIO",
+      "identities": [
+        {
+          "name": "minio",
+          "principal": {
+            "value": "minio",
+            "type" : "service"
+          },
+          "keytab": {
+            "file": "${keytab_dir}/minio.service.keytab",
+            "owner": {
+              "name": "minio",
+              "access": "r"
+            },
+            "group": {
+              "name": "minio",
+              "access": ""
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+

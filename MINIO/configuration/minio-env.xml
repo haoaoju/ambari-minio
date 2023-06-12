@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+    
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+    <property>
+        <name>minio_user</name>
+        <display-name>Minio User</display-name>
+        <value>minio</value>
+        <property-type>USER</property-type>
+        <description/>
+            <value-attributes>
+                <type>user</type>
+                <overridable>false</overridable>
+            </value-attributes>
+        <on-ambari-upgrade add="true"/>
+    </property>
+
+    <property>
+        <name>minio_group</name>
+        <value>minio</value>
+        <property-type>GROUP</property-type>
+        <display-name>minio Group</display-name>
+        <description>minio group</description>
+        <on-ambari-upgrade add="true"/>
+    </property>
+
+    <property>
+        <name>minio_log_dir</name>
+        <value>/var/log/minio</value>
+        <description/>
+            <value-attributes>
+                <type>directory</type>
+                <editable-only-at-install>true</editable-only-at-install>
+                <overridable>false</overridable>
+            </value-attributes>
+        <on-ambari-upgrade add="true"/>
+    </property>
+
+    <property>
+        <name>minio_pid_dir</name>
+        <value>/var/run/minio-server</value>
+        <display-name>Minio PID dir</display-name>
+        <description/>
+            <value-attributes>
+                <type>directory</type>
+                <editable-only-at-install>true</editable-only-at-install>
+                <overridable>false</overridable>
+            </value-attributes>
+        <on-ambari-upgrade add="true"/>
+    </property>
+    <property>
+        <name>minio_user_nofile_soft</name>
+        <value>262144</value>
+        <description>Max open files limit setting for Minio user.</description>
+        <on-ambari-upgrade add="true"/>
+    </property>
+    <property>
+        <name>minio_user_nofile_hard</name>
+        <value>262144</value>
+        <description>Max number of processes limit setting for Minio user.</description>
+        <on-ambari-upgrade add="true"/>
+    </property>
+
+</configuration>

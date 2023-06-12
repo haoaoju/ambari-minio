@@ -1,0 +1,4 @@
+#!/bin/bash
+export MINIO_ROOT_USER={{minio_root_user}}
+export MINIO_ROOT_PASSWORD={{minio_root_password}}
+nohup {{minio_install_dir}}/bin/minio server --address :{{minio_port}} --console-address :{{minio_console_port}} {{minio_config}} > {{minio_log_file}} & echo $! > {{minio_pid_file}}
